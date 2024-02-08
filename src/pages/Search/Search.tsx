@@ -1,15 +1,16 @@
 import { BookRecord, SearchInput } from "components";
 import { PAGE_SIZE } from "configs";
+import { useGlobalContext } from "context";
 import { getExcerpt, useDebounce } from "helpers";
 import { useBookSearch } from "queries";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { BookInfoT } from "types";
 import { Main } from "./Search.styled";
 
 const Search = () => {
-  const [query, setQuery] = useState("");
   const { ref, inView } = useInView();
+  const { query, setQuery } = useGlobalContext();
 
   const debouncedQuery = useDebounce(query, 500);
   const { data, fetchNextPage, hasNextPage } = useBookSearch(debouncedQuery);
@@ -36,9 +37,9 @@ const Search = () => {
         title: book.title,
         id: book.key.split("/").pop(),
         authors: book?.author_name ?? ["Unknown"],
-        year: book.first_publish_year,
-        publisher: book.publisher[0],
-        subjects: book.subject,
+        year: book?.first_publish_year ?? "Unknown publish year",
+        publisher: book?.publisher?.[0] ?? "Unknown publisher",
+        subjects: book?.subject ?? ["Unknown subject"],
         excerpt: getExcerpt(),
       };
 

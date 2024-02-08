@@ -22,7 +22,7 @@ const BookRecord = (props: Props) => {
         </Link>
         <div className="author">
           {authors.map((author) => (
-            <span>{author}</span>
+            <span key={author}>{author}</span>
           ))}
         </div>
         <div className="year">

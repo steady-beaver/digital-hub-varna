@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { GlobalContextProvider } from "context";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -16,11 +17,13 @@ root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <QueryClientProvider client={queryClient}>
-          <GlobalStyles />
-          <App />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
+        <GlobalContextProvider>
+          <QueryClientProvider client={queryClient}>
+            <GlobalStyles />
+            <App />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
+        </GlobalContextProvider>
       </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>
