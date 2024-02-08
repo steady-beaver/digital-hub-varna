@@ -1,7 +1,10 @@
 import styled from "styled-components";
+import { theme } from "theme";
 
-export const Book = styled.div`
-  border: 1px solid red;
-  min-height: 100px;
-  padding: 10px;
+export const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${theme.spacing[4]};
+  padding: ${theme.spacing[5]};
 `;

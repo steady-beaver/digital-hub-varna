@@ -1,16 +1,18 @@
-import { BookRecord } from "components";
+import { BookRecord, SearchInput } from "components";
 import { PAGE_SIZE } from "configs";
-import { useDebounce } from "helpers";
+import { getExcerpt, useDebounce } from "helpers";
 import { useBookSearch } from "queries";
 import React, { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { BookInfoT } from "types";
+import { Main } from "./Search.styled";
+
 const Search = () => {
   const [query, setQuery] = useState("");
   const { ref, inView } = useInView();
 
   const debouncedQuery = useDebounce(query, 500);
-  const { data, fetchNextPage, status, hasNextPage } =
-    useBookSearch(debouncedQuery);
+  const { data, fetchNextPage, hasNextPage } = useBookSearch(debouncedQuery);
 
   useEffect(() => {
     if (inView && hasNextPage) {
@@ -30,14 +32,24 @@ const Search = () => {
         (data.pages.length - 1) * PAGE_SIZE +
         data.pages[data.pages.length - 1]?.docs.length;
 
+      const bookInfo: BookInfoT = {
+        title: book.title,
+        id: book.key.split("/").pop(),
+        authors: book?.author_name ?? ["Unknown"],
+        year: book.first_publish_year,
+        publisher: book.publisher[0],
+        subjects: book.subject,
+        excerpt: getExcerpt(),
+      };
+
       return (
         <BookRecord
-          key={book.key}
+          key={bookInfo.id}
           index={currentIndex}
           innerRef={currentIndex === currentLastIndex ? ref : undefined}
-        >
-          {book.title}
-        </BookRecord>
+          // key into bookInfo
+          {...bookInfo}
+        />
       );
     })
   );
@@ -45,12 +57,11 @@ const Search = () => {
   console.log("data: ", data);
 
   return (
-    <>
-      <input type="text" value={query} onChange={handleSearch} />
-      <div>Search</div>
+    <Main>
+      <SearchInput value={query} onChange={handleSearch} />
       <div>{content}</div>
       {hasNextPage && <div>Loading...</div>}
-    </>
+    </Main>
   );
 };
 
