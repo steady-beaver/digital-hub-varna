@@ -36,10 +36,10 @@ const Search = () => {
       const bookInfo: BookInfoT = {
         title: book.title,
         id: book.key.split("/").pop(),
-        authors: book?.author_name ?? ["Unknown"],
+        authors: book?.author_name?.slice(0, 3) ?? ["Unknown"],
         year: book?.first_publish_year ?? "Unknown publish year",
         publisher: book?.publisher?.[0] ?? "Unknown publisher",
-        subjects: book?.subject ?? ["Unknown subject"],
+        subjects: book?.subject?.slice(0, 5) ?? ["Unknown subject"],
         excerpt: getExcerpt(),
       };
 

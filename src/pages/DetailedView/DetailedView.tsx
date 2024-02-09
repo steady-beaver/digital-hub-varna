@@ -4,17 +4,10 @@ import { TwoSidedLayout } from "components";
 import { useLocation } from "react-router-dom";
 import { BookInfoT } from "types";
 
+import { Text } from "components";
 import { useGlobalContext } from "context";
-import {
-  Authors,
-  Except,
-  FavoriteIconWrapper,
-  Main,
-  Publisher,
-  Tags,
-  Title,
-  Year,
-} from "./DetailedView.styles";
+import { theme } from "theme";
+import { FavoriteIconWrapper, Main } from "./DetailedView.styled";
 
 const DetailedView = () => {
   const { state, key } = useLocation();
@@ -24,14 +17,20 @@ const DetailedView = () => {
   console.log("key: ", key);
   console.log("HERE");
 
-  const titleContainer = { flexGrow: 1, marginLeft: "50px" };
+  const titleContainer = {
+    flexGrow: 1,
+    marginLeft: "50px",
+    color: `${theme.colors.green.dark}`,
+    textAlign: "center",
+  };
+
   const { getIsFavorite, removeBook, addBook } = useGlobalContext();
 
   return (
     <Main>
       <TwoSidedLayout>
         <TwoSidedLayout.Left styles={titleContainer}>
-          <Title>{title}</Title>
+          <Text variant="h1">{title}</Text>
         </TwoSidedLayout.Left>
         <TwoSidedLayout.Right>
           <FavoriteIconWrapper
@@ -43,17 +42,17 @@ const DetailedView = () => {
           </FavoriteIconWrapper>
         </TwoSidedLayout.Right>
       </TwoSidedLayout>
-      <Authors>{authors.join(", ")}</Authors>
+      <Text variant="italic">{authors.join(", ")}</Text>
       <TwoSidedLayout>
         <TwoSidedLayout.Left>
-          <Publisher>{publisher}</Publisher>
+          <Text>{publisher}</Text>
         </TwoSidedLayout.Left>
         <TwoSidedLayout.Right>
-          <Year>{year}</Year>
+          <Text>{year}</Text>
         </TwoSidedLayout.Right>
       </TwoSidedLayout>
-      <Except>{excerpt}</Except>
-      <Tags>{subjects.join(", ")}</Tags>
+      <Text>{excerpt}</Text>
+      <Text>{subjects.join(", ")}</Text>
     </Main>
   );
 };

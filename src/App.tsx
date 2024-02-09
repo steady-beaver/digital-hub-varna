@@ -1,7 +1,7 @@
 import { Navigation } from "navigation";
 import { DetailedView } from "pages/DetailedView";
+import { Favorite } from "pages/Favorite";
 import { Search } from "pages/Search";
-import { WishList } from "pages/WishList";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <>
       <Navigation />
       <Routes>
-        <Route path="/" element={<WishList />} />
+        <Route path="/" element={<Favorite />} />
         <Route path="/search" element={<Search />} />
         <Route path="/book/:id" element={<DetailedView />} />
         <Route path="*" element={<div>Invalid route</div>} />

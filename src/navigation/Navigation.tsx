@@ -1,8 +1,8 @@
 import { ReactComponent as Logo } from "assets/HeidelbergMaterials.svg";
-import { TwoSidedLayout } from "components";
+import { Text, TwoSidedLayout } from "components";
 import { NavLink } from "react-router-dom";
 import { theme } from "theme";
-import { StyledNav } from "./Navigation.styled";
+import { StyledLi, StyledNav } from "./Navigation.styled";
 
 const main = {
   height: "136px",
@@ -17,17 +17,21 @@ const Navigation = () => {
         <Logo height="80px" />
         <StyledNav>
           <ul>
-            <li>
-              <NavLink to="/">Wish List</NavLink>
-            </li>
-            <li>
-              <NavLink to="/search">Search</NavLink>
-            </li>
+            <StyledLi>
+              <NavLink to="/">
+                <Text variant="accent">Favorite</Text>
+              </NavLink>
+            </StyledLi>
+            <StyledLi>
+              <NavLink to="/search">
+                <Text variant="accent">Search</Text>
+              </NavLink>
+            </StyledLi>
           </ul>
         </StyledNav>
       </TwoSidedLayout.Left>
       <TwoSidedLayout.Right>
-        <b>User</b>
+        <Text variant="accent">User</Text>
       </TwoSidedLayout.Right>
     </TwoSidedLayout>
   );

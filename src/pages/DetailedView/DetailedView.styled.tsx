@@ -15,24 +15,23 @@ export const Main = styled.div`
   font-weight: 300;
 `;
 
-export const Title = styled.div`
-  font-size: 3em;
-  font-weight: 400;
-  color: ${theme.colors.green.dark};
-  text-align: center;
-`;
-
-export const Authors = styled.div`
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-`;
-export const Publisher = styled.div``;
-export const Year = styled.div``;
-export const Tags = styled.div``;
-export const Except = styled.div``;
-
 export const FavoriteIconWrapper = styled.div`
   cursor: pointer;
   fill: ${theme.colors.green.dark};
   display: flex;
+  justify-content: center;
+  align-items: center;
+  // border: 1px solid ${theme.colors.green.dark};
+  border-radius: ${theme.round[5]};
+  padding: ${theme.spacing[1]};
+
+  &:hover {
+    box-shadow: ${theme.shadow};
+  }
+
+  & > svg {
+    position: relative;
+    bottom: -2px;
+    right: -1px;
+  }
 `;

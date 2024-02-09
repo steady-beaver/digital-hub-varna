@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BookInfoT } from "types";
+import MOCK_FAVORITES from "./MOCK_FAVORITES.json";
 
 export type GlobalContextT = {
   query: string;
@@ -22,7 +23,9 @@ type Props = {
 
 export function GlobalContextProvider({ children }: Props) {
   const [query, setQuery] = useState("");
-  const [favoriteBooks, setFavoriteBooks] = useState<BookInfoT[]>([]);
+  const [favoriteBooks, setFavoriteBooks] = useState<BookInfoT[]>(
+    MOCK_FAVORITES as BookInfoT[]
+  );
 
   const addBook = (bookInfo: BookInfoT) => {
     setFavoriteBooks((books) => [...books, bookInfo]);

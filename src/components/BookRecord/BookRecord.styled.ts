@@ -15,29 +15,12 @@ export const Frame = styled.div`
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
   }
-
-  & .title {
-    &:hover {
-      cursor: pointer;
-      color: ${({ theme }) => theme.colors.green.main};
-    }
-  }
-  & .author {
-    font-weight: 200;
-  }
-
-  & .year {
-    flex-grow: 1;
-    display: flex;
-    align-items: flex-end;
-    font-weight: 200;
-  }
 `;
 
-export const Counter = styled.span`
-  margin-right: ${theme.spacing[1]};
-  &::after {
-    content: ".";
+export const Title = styled.div`
+  &:hover {
+    cursor: pointer;
+    color: ${({ theme }) => theme.colors.green.main};
   }
 `;
 
@@ -45,5 +28,18 @@ export const Content = styled.span`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  // border: 1px solid red;
+`;
+
+export const Year = styled.div`
+  flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+  font-weight: 200;
+`;
+
+export const Counter = styled.span`
+  margin-right: ${theme.spacing[1]};
+  &::after {
+    content: ".";
+  }
 `;

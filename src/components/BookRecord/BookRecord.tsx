@@ -1,6 +1,7 @@
+import { Text } from "components";
 import { Link } from "react-router-dom";
 import { BookInfoT } from "types";
-import { Content, Counter, Frame } from "./BookRecord.styled";
+import { Content, Counter, Frame, Title, Year } from "./BookRecord.styled";
 
 type Props = BookInfoT & {
   index: number;
@@ -18,16 +19,16 @@ const BookRecord = (props: Props) => {
           to={`/book/${rest.id}`}
           state={{ title, authors, year, ...rest } as BookInfoT}
         >
-          <div className="title">{title}</div>
+          <Title>{title}</Title>
         </Link>
-        <div className="author">
+        <Text variant="light">
           {authors.map((author) => (
             <span key={author}>{author}</span>
           ))}
-        </div>
-        <div className="year">
-          <span>{year}</span>
-        </div>
+        </Text>
+        <Year>
+          <Text variant="light">{year}</Text>
+        </Year>
       </Content>
     </Frame>
   );
