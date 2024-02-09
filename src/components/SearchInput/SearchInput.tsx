@@ -6,13 +6,20 @@ import {
   StyledSearch,
 } from "./SearchInput.styles";
 
+type Props = {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  icon?: React.ReactNode;
+  placeholder?: string;
+} & React.ComponentProps<typeof SearchContainer>;
+
 const SearchInput = ({
   value,
   onChange,
   icon = <StyledIconSearch />,
   placeholder = "Search...",
   ...props
-}) => {
+}: Props) => {
   const id = useId();
 
   return (

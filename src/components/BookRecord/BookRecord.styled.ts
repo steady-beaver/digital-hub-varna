@@ -12,8 +12,14 @@ export const Frame = styled.div`
 
   &:first-child {
     border-top: 1px solid ${({ theme }) => theme.colors.green.dark};
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-top-left-radius: ${theme.round[1]};
+    border-top-right-radius: ${theme.round[1]};
+  }
+
+  &:last-child {
+    border-bottom: 1px solid ${({ theme }) => theme.colors.green.dark};
+    border-bottom-left-radius: ${theme.round[1]};
+    border-bottom-right-radius: ${theme.round[1]};
   }
 `;
 
