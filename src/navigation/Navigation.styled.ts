@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "theme";
+import { theme } from "styles";
 
 export const StyledNav = styled.nav`
   margin-left: ${theme.spacing[4]};

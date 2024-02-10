@@ -9,3 +9,8 @@ export type BookInfoT = {
   publisher: string;
   excerpt: string;
 };
+
+export type CredentialsT = {
+  email: string;
+  password: string;
+};

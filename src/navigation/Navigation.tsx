@@ -1,7 +1,7 @@
 import { ReactComponent as Logo } from "assets/HeidelbergMaterials.svg";
 import { Text, TwoSidedLayout } from "components";
 import { NavLink } from "react-router-dom";
-import { theme } from "theme";
+import { theme } from "styles";
 import { StyledLi, StyledNav } from "./Navigation.styled";
 
 const main = {
@@ -19,19 +19,19 @@ const Navigation = () => {
           <ul>
             <StyledLi>
               <NavLink to="/">
-                <Text variant="accent">Favorite</Text>
+                <Text $variant="accent">Favorite</Text>
               </NavLink>
             </StyledLi>
             <StyledLi>
               <NavLink to="/search">
-                <Text variant="accent">Search</Text>
+                <Text $variant="accent">Search</Text>
               </NavLink>
             </StyledLi>
           </ul>
         </StyledNav>
       </TwoSidedLayout.Left>
       <TwoSidedLayout.Right>
-        <Text variant="accent">User</Text>
+        <Text $variant="accent">User</Text>
       </TwoSidedLayout.Right>
     </TwoSidedLayout>
   );

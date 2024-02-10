@@ -6,7 +6,7 @@ import { BookInfoT } from "types";
 
 import { Text } from "components";
 import { useGlobalContext } from "context";
-import { theme } from "theme";
+import { theme } from "styles";
 import { FavoriteIconWrapper, Main } from "./DetailedView.styled";
 
 const DetailedView = () => {
@@ -30,7 +30,7 @@ const DetailedView = () => {
     <Main>
       <TwoSidedLayout>
         <TwoSidedLayout.Left styles={titleContainer}>
-          <Text variant="h1">{title}</Text>
+          <Text $variant="h1">{title}</Text>
         </TwoSidedLayout.Left>
         <TwoSidedLayout.Right>
           <FavoriteIconWrapper
@@ -42,7 +42,7 @@ const DetailedView = () => {
           </FavoriteIconWrapper>
         </TwoSidedLayout.Right>
       </TwoSidedLayout>
-      <Text variant="italic">{authors.join(", ")}</Text>
+      <Text $variant="italic">{authors.join(", ")}</Text>
       <TwoSidedLayout>
         <TwoSidedLayout.Left>
           <Text>{publisher}</Text>

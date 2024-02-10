@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "theme";
+import { theme } from "styles";
 
 export const Frame = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.green.dark};

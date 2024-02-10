@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    font-family: "Lexend", "Roboto", sans-serif;
+    font-family: "Lexend", sans-serif;
     padding: 0;
     margin: 0;
   }

@@ -11,10 +11,10 @@ const FavCard = (props: BookInfoT) => {
         <Text>{title}</Text>
 
         <div>
-          <Text variant="light">{authors[0] + " " + year}</Text>
+          <Text $variant="light">{authors[0] + " " + year}</Text>
         </div>
         <Tags>
-          <Text variant="light">{subjects.join(", ")}</Text>
+          <Text $variant="light">{subjects.join(", ")}</Text>
         </Tags>
       </Frame>
     </Link>

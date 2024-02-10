@@ -21,13 +21,13 @@ const BookRecord = (props: Props) => {
         >
           <Title>{title}</Title>
         </Link>
-        <Text variant="light">
+        <Text $variant="light">
           {authors.map((author) => (
             <span key={author}>{author}</span>
           ))}
         </Text>
         <Year>
-          <Text variant="light">{year}</Text>
+          <Text $variant="light">{year}</Text>
         </Year>
       </Content>
     </Frame>
