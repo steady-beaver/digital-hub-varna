@@ -10,25 +10,32 @@ import { theme } from "styles";
 import { FavoriteIconWrapper, Main } from "./DetailedView.styled";
 
 const DetailedView = () => {
-  const { state, key } = useLocation();
+  const { state } = useLocation();
   const { title, authors, publisher, year, subjects, excerpt, id } =
     state as BookInfoT;
-  console.log("state: ", state);
-  console.log("key: ", key);
-  console.log("HERE");
 
   const titleContainer = {
     flexGrow: 1,
     marginLeft: "50px",
     color: `${theme.colors.green.dark}`,
     textAlign: "center",
+    "@media (max-width: 500px)": {
+      marginLeft: "0",
+    },
+  };
+
+  const twoSidedLayoutMobile = {
+    "@media (max-width: 500px)": {
+      flexDirection: "column-reverse",
+      gap: `${theme.spacing[2]}`,
+    },
   };
 
   const { getIsFavorite, removeBook, addBook } = useGlobalContext();
 
   return (
     <Main>
-      <TwoSidedLayout>
+      <TwoSidedLayout style={twoSidedLayoutMobile}>
         <TwoSidedLayout.Left style={titleContainer}>
           <Text $variant="h1">{title}</Text>
         </TwoSidedLayout.Left>
@@ -43,7 +50,7 @@ const DetailedView = () => {
         </TwoSidedLayout.Right>
       </TwoSidedLayout>
       <Text $variant="italic">{authors.join(", ")}</Text>
-      <TwoSidedLayout>
+      <TwoSidedLayout style={twoSidedLayoutMobile}>
         <TwoSidedLayout.Left>
           <Text>{publisher}</Text>
         </TwoSidedLayout.Left>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "styles";
+import device from "styles/mediaQueries";
 
 export const Main = styled.div`
   display: flex;
@@ -13,6 +14,15 @@ export const Main = styled.div`
   border-radius: ${theme.round[2]};
   max-width: 800px;
   font-weight: 300;
+
+  @media ${device.tablet} {
+    padding: ${theme.spacing[4]};
+    margin: ${theme.spacing[5]} ${theme.spacing[4]};
+  }
+  @media ${device.mobile} {
+    padding: ${theme.spacing[3]};
+    margin: ${theme.spacing[5]} ${theme.spacing[3]};
+  }
 `;
 
 export const FavoriteIconWrapper = styled.div`

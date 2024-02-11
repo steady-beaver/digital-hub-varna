@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { theme } from "styles";
+import device from "styles/mediaQueries";
 
 export const Frame = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.green.dark};
   border-top: none;
   min-height: 100px;
   padding: 10px;
-  max-width: 700px;
+  width: 700px;
   display: flex;
   font-weight: 300;
 
@@ -20,6 +21,14 @@ export const Frame = styled.div`
     border-bottom: 1px solid ${({ theme }) => theme.colors.green.dark};
     border-bottom-left-radius: ${theme.round[1]};
     border-bottom-right-radius: ${theme.round[1]};
+  }
+
+  @media ${device.tablet} {
+    width: 90%;
+    margin: 0 auto;
+  }
+  @media ${device.mobile} {
+    width: 100%;
   }
 `;
 

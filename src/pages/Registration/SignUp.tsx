@@ -16,8 +16,6 @@ export default function SignUp() {
   const { mutate: signUp } = useSignUp();
 
   const onSubmit = async (values: CredentialsT) => {
-    console.log("Values: ", values);
-
     try {
       signUp(values);
     } catch (err) {

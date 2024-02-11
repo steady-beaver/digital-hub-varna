@@ -21,7 +21,7 @@ const queryClient = new QueryClient({
   queryCache: new QueryCache({
     onError: (error, query) => {
       console.error("TanStack query | message: ", error.message, query);
-      toast.error("TUK: " + error?.message);
+      toast.error(error?.message);
     },
   }),
 });
@@ -40,7 +40,7 @@ root.render(
               <MuiTheme theme={muiTheme}>
                 <GlobalStyles />
                 <App />
-                <ToastContainer position="bottom-center" autoClose={false} />
+                <ToastContainer position="bottom-center" />
               </MuiTheme>
               <ReactQueryDevtools initialIsOpen={false} />
             </QueryClientProvider>

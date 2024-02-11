@@ -5,6 +5,7 @@ export const Frame = styled.div`
   border-radius: ${theme.spacing[1]};
   border: 1px solid ${theme.colors.green.dark};
   padding: ${theme.spacing[2]};
+  height: 100%;
 
   &:hover {
     cursor: pointer;

@@ -1,54 +1,51 @@
 import { ReactComponent as Logo } from "assets/HeidelbergMaterials.svg";
-import { Text, TwoSidedLayout } from "components";
-import { useAuth } from "contexts";
+import { ReactComponent as Hamburger } from "assets/hamburger.svg";
+import { Text } from "components";
+import { useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
-import { theme } from "styles";
-import { StyledLi, StyledNav } from "./Navigation.styled";
-
-const frame = {
-  height: "136px",
-  borderBottom: `${theme.spacing[1]} solid ${theme.colors.green.dark}`,
-  padding: `0 ${theme.spacing[5]}`,
-  color: `${theme.colors.green.dark}`,
-};
+import {
+  Frame,
+  MobileMenuIcon,
+  StyledLi,
+  StyledNav,
+} from "./Navigation.styled";
 
 const Navigation = () => {
-  const auth = useAuth();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
-  console.log("auth Navigation: ", auth);
+
+  const toggleMobileMenu = () => {
+    console.log("MENU toggle", isMobileMenuOpen);
+    setIsMobileMenuOpen((prev) => !prev);
+  };
 
   return (
     <>
-      <TwoSidedLayout style={frame}>
-        <TwoSidedLayout.Left>
-          <Logo height="80px" />
-          <StyledNav>
-            <ul>
-              <StyledLi>
-                <NavLink to="/">
-                  <Text $variant="accent">Favorite</Text>
-                </NavLink>
-              </StyledLi>
-              <StyledLi>
-                <NavLink to="/search">
-                  <Text $variant="accent">Search</Text>
-                </NavLink>
-              </StyledLi>
-            </ul>
-          </StyledNav>
-        </TwoSidedLayout.Left>
-        <TwoSidedLayout.Right>
-          <Text
-            style={{
-              cursor: "pointer",
-            }}
-            $variant="accent"
-            onClick={() => navigate(0)}
-          >
-            Log out
-          </Text>
-        </TwoSidedLayout.Right>
-      </TwoSidedLayout>
+      <Frame>
+        <Logo height="80px" />
+        <StyledNav $isMobileMenuOpen={isMobileMenuOpen}>
+          <ul>
+            <StyledLi>
+              <NavLink to="/">
+                <Text $variant="accent">Favorite</Text>
+              </NavLink>
+            </StyledLi>
+            <StyledLi>
+              <NavLink to="/search">
+                <Text $variant="accent">Search</Text>
+              </NavLink>
+            </StyledLi>
+            <StyledLi>
+              <NavLink to="/singout" onClick={() => navigate(0)}>
+                <Text $variant="accent"> Log out </Text>
+              </NavLink>
+            </StyledLi>
+          </ul>
+        </StyledNav>
+        <MobileMenuIcon onClick={toggleMobileMenu}>
+          <Hamburger />
+        </MobileMenuIcon>
+      </Frame>
       <Outlet />
     </>
   );
