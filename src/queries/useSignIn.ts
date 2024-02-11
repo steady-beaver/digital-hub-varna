@@ -1,15 +1,27 @@
 import { useMutation } from "@tanstack/react-query";
-import postSignIn from "api/postSignIn";
+import postSignIn, { PostSignInResponseT } from "api/postSignIn";
 import { AxiosError } from "axios";
+import { useAuth } from "contexts";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { AuthT, CredentialsT } from "types";
+import { CredentialsT } from "types";
 
 const useSignIn = () => {
-  return useMutation<AuthT, AxiosError<{ message: string }>, CredentialsT>({
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+  return useMutation<
+    PostSignInResponseT,
+    AxiosError<{ message: string }>,
+    CredentialsT
+  >({
     mutationFn: ({ email, password }) => postSignIn({ email, password }),
-    onSuccess: (data) => {
-      toast.success(data.accessToken);
-      // navigate("/signin");
+    onSuccess: (data, credentials) => {
+      setAuth({
+        accessToken: data.accessToken,
+        user: credentials.email,
+      });
+      toast.success(`Hello ${credentials.email}`);
+      navigate("/search");
     },
     onError: (err) => {
       toast.error(err?.response?.data?.message);

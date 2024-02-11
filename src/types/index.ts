@@ -17,7 +17,5 @@ export type CredentialsT = {
 
 export type AuthT = {
   user: string;
-  pwd: string;
-  roles: string[];
   accessToken: string;
 };

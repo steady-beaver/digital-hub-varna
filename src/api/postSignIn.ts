@@ -1,8 +1,15 @@
 import { AUTH_SERVER_URL } from "configs";
-import { AuthT, CredentialsT } from "types";
+import { CredentialsT } from "types";
 import { axiosWithHeaders } from "./helpers";
 
-const postSignIn = ({ email, password }: CredentialsT): Promise<AuthT> => {
+export type PostSignInResponseT = {
+  accessToken: string;
+};
+
+const postSignIn = ({
+  email,
+  password,
+}: CredentialsT): Promise<PostSignInResponseT> => {
   return axiosWithHeaders
     .post(`${AUTH_SERVER_URL}/auth`, JSON.stringify({ email, password }))
     .then((res) => res.data);

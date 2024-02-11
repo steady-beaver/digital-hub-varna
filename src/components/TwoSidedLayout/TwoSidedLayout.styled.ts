@@ -2,7 +2,7 @@
 import styled from "styled-components";
 
 type Props = {
-  $styles?: object;
+  $style?: object;
 };
 
 export const LeftRightContainer = styled.div<Props>`
@@ -10,12 +10,12 @@ export const LeftRightContainer = styled.div<Props>`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  ${({ $styles }) => $styles}
+  ${({ $style }) => $style}
 `;
 
 export const SideFrame = styled.div<Props>`
   display: flex;
   align-items: center;
   justify-content: center;
-  ${({ $styles }) => $styles}
+  ${({ $style }) => $style}
 `;

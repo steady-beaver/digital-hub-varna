@@ -2,19 +2,19 @@ import { LeftRightContainer, SideFrame } from "./TwoSidedLayout.styled";
 
 type Props = {
   children: React.ReactNode;
-  styles?: object;
+  style?: object;
   as?: string;
 };
 
-const Side = ({ children, styles, as, ...props }: Props) => (
-  <SideFrame $styles={styles} as={as} {...props}>
+const Side = ({ children, style, as, ...props }: Props) => (
+  <SideFrame $style={style} as={as} {...props}>
     {children}
   </SideFrame>
 );
 
-const TwoSidedLayout = ({ children, styles, as, ...props }: Props) => {
+const TwoSidedLayout = ({ children, style, as, ...props }: Props) => {
   return (
-    <LeftRightContainer $styles={styles} as={as} {...props}>
+    <LeftRightContainer $style={style} as={as} {...props}>
       {children}
     </LeftRightContainer>
   );

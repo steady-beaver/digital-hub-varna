@@ -29,7 +29,7 @@ const DetailedView = () => {
   return (
     <Main>
       <TwoSidedLayout>
-        <TwoSidedLayout.Left styles={titleContainer}>
+        <TwoSidedLayout.Left style={titleContainer}>
           <Text $variant="h1">{title}</Text>
         </TwoSidedLayout.Left>
         <TwoSidedLayout.Right>
