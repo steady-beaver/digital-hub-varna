@@ -1,46 +1,59 @@
-# Getting Started with Create React App
+##Architecture
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_Server_ project is added just for registration purposes. It is using Atlas Mongo service with free account.
 
-## Available Scripts
+The app topic is book manager. User can search books and save favorites. You can search books with infinite scroll technic in external API. Searched queries are cached. There is a detailed book view where user can click the heart and add book to favorites. Favorite books are shown in dynamic grid.
 
-In the project directory, you can run:
+##Fancy things
+Infinite scroll technique on the search page
 
-### `yarn start`
+##Demonstrated features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+__Routing__
+react-router-dom v6, 
+protected routes, 
+layout, 
+dynamic route for /book/:id
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+__Responsive design__
+tablet and mobile
 
-### `yarn test`
+__Registration form__
+Formik
+yup validator
+RegEx pattern for the password
+with registration API (please check the server folder)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+__Content: 3 dynamic pages__
+search
+book details
+favorites
 
-### `yarn build`
+__Styles__
+Custom styles with _styled-components_ for the content pages
+CSS framework _Material-UI_ v4 for registration form
+I used it to accelerate the development
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+__TypeScript__
+Static types
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+__Requests__
+axios 
+React Query (aka TanStack Query) v6
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+__State management__
+React context, two times - for authentication and for the books logic
+React Query (aka TanStack Query) v6 - async state manager for requests to the servers. Provides caching
 
-### `yarn eject`
+__Notifications__
+react-toastify
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+npm install
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+npm start
+```
