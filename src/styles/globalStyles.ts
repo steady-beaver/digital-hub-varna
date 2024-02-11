@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
   
   :root {
     ${colors}
+    --toastify-color-success: ${colors.green.dark};
   }
 
   html {

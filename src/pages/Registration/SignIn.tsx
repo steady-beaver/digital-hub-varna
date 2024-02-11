@@ -7,7 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { useFormik } from "formik";
-import { useState } from "react";
+import { useSignIn } from "queries";
 import { CredentialsT } from "types";
 
 const useStyles = makeStyles((theme) => ({
@@ -27,20 +27,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SignIn = () => {
-  const [error, setError] = useState("");
   const classes = useStyles();
 
-  const onSubmit = async (values: any) => {
+  const { mutate: signIn } = useSignIn();
+
+  const onSubmit = async (values: CredentialsT) => {
     console.log("Values: ", values);
-    setError("");
 
     try {
-      // const response = await axios.post(
-      //   "http://localhost:9000/api/v1/login",
-      //   values
-      // );
+      signIn(values);
     } catch (err) {
-      console.log("Error: ", err);
+      console.log("Sign in component ERR: ", err);
     }
   };
 
@@ -60,11 +57,6 @@ const SignIn = () => {
           Sign in
         </Typography>
         <form className={classes.form} onSubmit={formik.handleSubmit}>
-          {error && (
-            <Typography color="error" align="center">
-              {error}
-            </Typography>
-          )}
           <TextField
             variant="outlined"
             margin="normal"

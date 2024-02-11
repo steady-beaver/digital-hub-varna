@@ -5,10 +5,32 @@ import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
+import { useFormik } from "formik";
+import { useSignUp } from "queries";
+import { CredentialsT } from "types";
 import { useStyles } from "./styles";
 
 export default function SignUp() {
   const classes = useStyles();
+  const { mutate: signUp } = useSignUp();
+
+  const onSubmit = async (values: CredentialsT) => {
+    console.log("Values: ", values);
+
+    try {
+      signUp(values);
+    } catch (err) {
+      console.log("Error: ", err);
+    }
+  };
+
+  const formik = useFormik<CredentialsT>({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit,
+  });
 
   return (
     <Container component="main" maxWidth="xs">
@@ -17,31 +39,12 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form
+          className={classes.form}
+          noValidate
+          onSubmit={formik.handleSubmit}
+        >
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -51,6 +54,8 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -63,6 +68,8 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
               />
             </Grid>
           </Grid>

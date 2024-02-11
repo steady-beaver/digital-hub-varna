@@ -14,3 +14,10 @@ export type CredentialsT = {
   email: string;
   password: string;
 };
+
+export type AuthT = {
+  user: string;
+  pwd: string;
+  roles: string[];
+  accessToken: string;
+};

@@ -1,5 +1,5 @@
 import { Container, FavCard } from "components";
-import { useGlobalContext } from "context";
+import { useGlobalContext } from "contexts/GlobalContext";
 import { Grid } from "./Favorite.styled";
 
 const Favorite = () => {

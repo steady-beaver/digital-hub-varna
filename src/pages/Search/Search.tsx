@@ -1,11 +1,11 @@
 import { BookRecord, SearchInput } from "components";
 import { PAGE_SIZE } from "configs";
-import { useGlobalContext } from "context";
-import { getExcerpt, useDebounce } from "helpers";
+import { useGlobalContext } from "contexts/GlobalContext";
 import { useBookSearch } from "queries";
 import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { BookInfoT } from "types";
+import { getExcerpt, useDebounce } from "utilities";
 import { Main } from "./Search.styled";
 
 const Search = () => {

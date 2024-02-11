@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 import { BookInfoT } from "types";
 
 import { Text } from "components";
-import { useGlobalContext } from "context";
+import { useGlobalContext } from "contexts/GlobalContext";
 import { theme } from "styles";
 import { FavoriteIconWrapper, Main } from "./DetailedView.styled";
 
