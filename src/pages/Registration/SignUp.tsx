@@ -9,6 +9,7 @@ import { useFormik } from "formik";
 import { useSignUp } from "queries";
 import { CredentialsT } from "types";
 import { useStyles } from "./styles";
+import validationSchema from "./validationScheme";
 
 export default function SignUp() {
   const classes = useStyles();
@@ -24,11 +25,21 @@ export default function SignUp() {
     }
   };
 
-  const formik = useFormik<CredentialsT>({
+  const {
+    values,
+    errors,
+    touched,
+    handleChange,
+    handleBlur,
+    isSubmitting,
+    isValid,
+    handleSubmit,
+  } = useFormik<CredentialsT>({
     initialValues: {
       email: "",
       password: "",
     },
+    validationSchema,
     onSubmit,
   });
 
@@ -39,11 +50,7 @@ export default function SignUp() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form
-          className={classes.form}
-          noValidate
-          onSubmit={formik.handleSubmit}
-        >
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -54,9 +61,13 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-                value={formik.values.email}
-                onChange={formik.handleChange}
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
+              {errors.email && touched.email && (
+                <p className="error">{errors.email}</p>
+              )}
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -68,9 +79,14 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                value={formik.values.password}
-                onChange={formik.handleChange}
+                value={values.password}
+                onChange={handleChange}
+                helperText="Small and big letter, number, special character [8-21]"
+                onBlur={handleBlur}
               />
+              {errors.password && touched.password && (
+                <p className="error">{errors.password}</p>
+              )}
             </Grid>
           </Grid>
           <Button
@@ -79,6 +95,7 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            disabled={isSubmitting || !isValid}
           >
             Sign Up
           </Button>

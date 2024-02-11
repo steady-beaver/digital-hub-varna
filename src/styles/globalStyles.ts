@@ -28,6 +28,10 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
+  .error {
+    color: ${colors.red.main};
+  }
+
 `;
 
 export default GlobalStyles;

@@ -1,6 +1,7 @@
 import { Navigation, PrivateRoutes } from "navigation";
 import { DetailedView } from "pages/DetailedView";
 import { Favorite } from "pages/Favorite";
+// import SignInZod from "pages/Registration/SignInZod";
 import SignIn from "pages/Registration/SignIn";
 import SignUp from "pages/Registration/SignUp";
 import { Search } from "pages/Search";
@@ -10,6 +11,7 @@ function App() {
   return (
     <>
       <Routes>
+        {/* <Route path="/signin" element={<SignInZod />} /> */}
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route element={<PrivateRoutes />}>

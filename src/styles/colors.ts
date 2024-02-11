@@ -9,6 +9,11 @@ const colors = {
     main: "#00843D",
     light: "#00DD39",
   },
+  red: {
+    dark: "#a70000",
+    main: "#ff0000",
+    light: "#ff5252",
+  },
 };
 
 export default colors;
